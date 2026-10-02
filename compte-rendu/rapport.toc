@@ -1,0 +1,16 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}Organisation du projet}{3}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Fichiers sources}{3}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Compilation}{3}{subsection.2.2}%
+\contentsline {section}{\numberline {3}Fonctions utilitaires}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Lecture d'un fichier}{3}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Normalisation des mots}{3}{subsection.3.2}%
+\contentsline {section}{\numberline {4}La classe \texttt {Lexique}}{3}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Conception}{3}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Méthodes principales}{4}{subsection.4.2}%
+\contentsline {section}{\numberline {5}Tests et résultats}{4}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Difficultés rencontrées et améliorations}{4}{subsection.5.1}%
+\contentsline {section}{\numberline {6}Conclusion}{5}{section.6}%
+\contentsline {section}{Appendices}{6}{section*.4}%
+\contentsline {section}{\numberline {A}Code source complet}{6}{appendix.1.A}%

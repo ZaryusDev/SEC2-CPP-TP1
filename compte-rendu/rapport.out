@@ -1,0 +1,15 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Organisation\040du\040projet}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Fichiers\040sources}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Compilation}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Fonctions\040utilitaires}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Lecture\040d'un\040fichier}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.2}{Normalisation\040des\040mots}{section.3}% 7
+\BOOKMARK [1][-]{section.4}{La\040classe\040Lexique}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{Conception}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.2}{M\351thodes\040principales}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Tests\040et\040r\351sultats}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Difficult\351s\040rencontr\351es\040et\040am\351liorations}{section.5}% 12
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 13
+\BOOKMARK [1][-]{section*.4}{Appendices}{}% 14
+\BOOKMARK [1][-]{appendix.1.A}{Code\040source\040complet}{}% 15

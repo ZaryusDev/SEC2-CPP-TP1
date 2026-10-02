@@ -1,0 +1,266 @@
+% !TEX encoding = UTF-8 Unicode
+% -*- coding: UTF-8; -*-
+% vim: set fenc=utf-8
+\documentclass[a4paper,12pt,french]{article}
+
+\usepackage{centrale}
+
+\hypersetup{
+  pdftitle={Compte-Rendu TP1 -- Lexique},
+  pdfauthor={Aymeric ZIMINSKI},
+  pdfsubject={Compte-rendu TP1 -- Programmation C++},
+  pdfproducer={Conversion PDF},
+  pdfkeywords={C++, lexique, fichiers, compilation séparée, Makefile} %
+}
+
+\DeclareGraphicsRule{.ai}{pdf}{.ai}{} % Pour insérer des documents .ai
+\graphicspath{{./img/} {./eps/} {./fig/}} % Pour ne pas avoir à ajouter eps/ton-image.jpg
+
+% ------------- Packages spéciaux, nécessaires pour ce rapport, à insérer ici -------------
+% Code informatique avec listings (chargé par centrale.sty, configuré ici pour le C++)
+\lstdefinestyle{cpp}{
+  language=C++,
+  frame=lines,
+  basicstyle=\small\ttfamily,
+  keywordstyle=\color{ECNBlue}\bfseries,
+  stringstyle=\color{CentraleRed},
+  commentstyle=\color{matlabGreen}\itshape,
+  identifierstyle=\color{black},
+  numbers=left,
+  numberstyle=\tiny\color{CentraleGray},
+  stepnumber=1,
+  numbersep=8pt,
+  breaklines=true,
+  showstringspaces=false,
+  columns=fullflexible,
+  keepspaces=true,
+  tabsize=4,
+  morekeywords={string_view, size_t, nullptr, constexpr, auto},
+  literate={é}{{\'e}}1 {è}{{\`e}}1 {à}{{\`a}}1 {ç}{{\c{c}}}1
+           {ê}{{\^e}}1 {ù}{{\`u}}1 {ô}{{\^o}}1 {î}{{\^i}}1
+}
+\lstdefinestyle{shell}{
+  language=bash,
+  frame=lines,
+  basicstyle=\small\ttfamily,
+  numbers=none,
+  showstringspaces=false,
+  columns=fullflexible,
+  keepspaces=true,
+}
+\lstset{style=cpp, title={}} % title={} annule le title=\lstname hérité de centrale.sty
+
+
+\begin{document}
+
+% --------------------------------------------------------------
+%                       Page de garde
+% --------------------------------------------------------------
+
+\begin{titlepage}
+  \begin{center}
+
+    \includegraphics[width=0.5\textwidth]{LogoECN.jpg}\\[1cm]
+
+    {\large Programmation C++ -- SEC2}\\[0.5cm]
+
+
+    % Titre
+    \rule{\linewidth}{0.5mm} \\[0.4cm]
+    { \huge \bfseries TP1 -- Lexique de fichiers texte\\[0.4cm] }
+    \rule{\linewidth}{0.5mm} \\[1.5cm]
+
+    % Auteur(es) et encadrant(es)
+    \noindent
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushleft} \large
+        \emph{Auteur :}\\
+        M. Aymeric \textsc{ZIMINSKI}
+      \end{flushleft}
+    \end{minipage}%
+    \begin{minipage}{0.4\textwidth}
+      \begin{flushright} \large
+        \emph{Encadrant :} \\
+        M.~Prénom \textsc{Nom}
+      \end{flushright}
+    \end{minipage}
+
+    \vfill
+
+    % Date en fin de page
+    {\large Version du\\ \today}
+
+  \end{center}
+\end{titlepage}
+
+% --------------------------------------------------------------
+%                    Table des matières
+% --------------------------------------------------------------
+
+\thispagestyle{empty}
+\tableofcontents
+\pagebreak
+
+% --------------------------------------------------------------
+%                         Début du corps
+% --------------------------------------------------------------
+
+\section{Introduction}
+
+% Contexte du TP, objectifs, organisation du rapport.
+Ce TP a pour objectif de construire le lexique (ensemble des mots distincts et
+leur nombre d'occurrences) d'un texte littéraire, à partir des fichiers
+\texttt{lesMiserables\_A.txt} et \texttt{notreDameDeParis\_A.txt}.
+
+\begin{cadregris}
+  \textbf{Objectifs :}
+  \begin{itemize}
+    \item lire un fichier texte en C++ ;
+    \item normaliser les mots (minuscules, suppression de la ponctuation) ;
+    \item construire et interroger un lexique ;
+    \item organiser le code en compilation séparée avec un \texttt{Makefile}.
+  \end{itemize}
+\end{cadregris}
+
+
+% --------------------------------------------------------------
+%                         Partie 1
+% --------------------------------------------------------------
+
+\pagebreak
+\section{Organisation du projet}
+\subsection{Fichiers sources}
+
+\begin{table}[ht!]
+	\begin{center}
+		\begin{tabular}{@{}ll@{}}
+			\toprule
+			\textbf{Fichier} & \textbf{Rôle} \\ \midrule
+			\texttt{main.cpp}              & Programme principal \\
+			\texttt{utilitaire.hpp / .cpp} & Lecture de fichier, traitement des chaînes \\
+			\texttt{lexique.h / .cpp}      & Classe \texttt{Lexique} \\
+			\texttt{Makefile}              & Règles de compilation \\ \bottomrule
+		\end{tabular}
+		\caption{Rôle des fichiers sources}
+		\label{tab:fichiers}
+	\end{center}
+\end{table}
+
+\subsection{Compilation}
+
+% Expliquer les règles du Makefile et les options (-std=c++20, -g, ...).
+Le projet est compilé avec \texttt{make}, qui produit l'exécutable \texttt{prog} :
+
+\begin{lstlisting}[style=shell]
+make
+./prog
+\end{lstlisting}
+
+
+% --------------------------------------------------------------
+%                         Partie 2
+% --------------------------------------------------------------
+
+\section{Fonctions utilitaires}
+
+% Pour chaque fonction : signature, choix d'implémentation, cas limites.
+\subsection{Lecture d'un fichier}
+
+\begin{lstlisting}
+bool readFileIntoString(std::string_view path, std::string& content);
+\end{lstlisting}
+
+\subsection{Normalisation des mots}
+
+% to_lower, remove_punctuation, trim_punctuation
+
+
+% --------------------------------------------------------------
+%                         Partie 3
+% --------------------------------------------------------------
+
+\section{La classe \texttt{Lexique}}
+\subsection{Conception}
+
+% Attributs, choix du conteneur (std::map, std::unordered_map, ...), justification.
+
+\subsection{Méthodes principales}
+
+% Constructeur, ajout d'un mot, recherche, affichage, sauvegarde...
+
+% Inclure directement un fichier source :
+%\lstinputlisting{../lexique.h}
+
+
+% --------------------------------------------------------------
+%                         Partie 4
+% --------------------------------------------------------------
+
+\section{Tests et résultats}
+
+% Protocole de test, sorties obtenues.
+\begin{table}[ht!]
+	\begin{center}
+		\begin{tabular}{@{}lrr@{}}
+			\toprule
+			\textbf{Texte} & \textbf{Mots totaux} & \textbf{Mots distincts} \\ \midrule
+			Les Misérables      & -- & -- \\
+			Notre-Dame de Paris & -- & -- \\ \bottomrule
+		\end{tabular}
+		\caption{Statistiques des lexiques obtenus}
+		\label{tab:resultats}
+	\end{center}
+\end{table}
+
+Le tableau \reff{tab:resultats} présente \dots
+
+% Pour introduire une capture de la sortie du programme :
+%\begin{figure}[ht!]
+%    \centering
+%    \includegraphics[width=0.7\textwidth]{capture.png}
+%    \caption{Sortie du programme}
+%    \label{fig:sortie}
+%\end{figure}
+
+
+\subsection{Difficultés rencontrées et améliorations}
+
+% Bugs, limites (accents UTF-8, mots composés...), pistes d'amélioration.
+
+
+% --------------------------------------------------------------
+%                            Conclusion
+% --------------------------------------------------------------
+
+\pagebreak
+\section{Conclusion}
+
+% Bilan du TP, compétences acquises.
+
+
+% --- Biblio par .bib
+%\bibliography{ici-ton-fichier-biblio}
+%\bibliographystyle{plain-fr.bst}
+%\selectlanguage{french}
+
+% --- Biblio écrite à la main
+%\begin{thebibliography}{7}
+%\bibitem[Bastien 2019]{id-de-la-source}
+%Auteurs : \emph{Un titre},  une date.
+%\end{thebibliography}
+
+% --------------------------------------------------------------
+%                            Appendices
+% --------------------------------------------------------------
+
+\pagebreak
+\begin{appendices}
+\section{Code source complet}
+
+%\lstinputlisting{../main.cpp}
+%\lstinputlisting{../utilitaire.cpp}
+%\lstinputlisting{../lexique.cpp}
+
+\end{appendices}
+
+\end{document}
